@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { TaskStatus } from '@prisma/client';
+import { TaskStatus } from '../../../const';
 
 const mongoDocIdRegex = /^[0-9a-fA-F]{24}$/;
 

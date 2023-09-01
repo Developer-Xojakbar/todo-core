@@ -6,7 +6,8 @@ const prisma = new PrismaClient();
 
 class TaskController {
     getAll = catchAsync(async (req: Request, res: Response) => {
-        const where = filterProps(req.query);
+        const { status, ...props } = req.query;
+        const where = { ...filterProps(props), status };
 
         const totalCount = await prisma.task.count({
             where,

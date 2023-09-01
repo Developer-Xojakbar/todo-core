@@ -1,0 +1,23 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DEV_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum TaskStatus {
+  Todo
+  InProgress
+  Done
+}
+
+model Task {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  task        String
+  status      TaskStatus
+  description String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
